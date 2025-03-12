@@ -24,7 +24,7 @@ def test_weather(mocker):
     mock_get = mocker.patch("pten.notice.Weather.get_city_weather")
     mock_get.return_value = "good weather"
 
-    weather = Weather()
+    weather = Weather("pten_keys_example.ini")
     weather_str = weather.get_city_weather("深圳", "Shenzhen")
     assert weather_str != ""
 
