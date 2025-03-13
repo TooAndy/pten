@@ -515,8 +515,8 @@ class CorpApi(AbstractApi):
         keys: Keys = None,
     ):
         super().__init__(keys_filepath, keys=keys)
-        self.corpid = corpid if corpid else self.keys.get_key("wwapi", "corpid")
-        corpsecret_in_file = self.keys.get_key("app", "app_secret")
+        self.corpid = corpid if corpid else self.keys.get_key("ww", "corpid")
+        corpsecret_in_file = self.keys.get_key("ww", "app_secret")
         self.corpsecret = corpsecret if corpsecret else corpsecret_in_file
 
         self._token_key = hashlib.sha1(

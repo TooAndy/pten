@@ -157,7 +157,7 @@ class Deepseek(Notice):
     def __init__(self, keys_filepath="pten_keys.ini", **kwargs):
         super().__init__()
         self.keys = Keys(keys_filepath)
-        sk_api_key = self.keys.get_key("ai", "deepseek_api_key")
+        sk_api_key = self.keys.get_key("notice", "deepseek_api_key")
         self.deepseek_client = OpenAI(
             api_key=sk_api_key,
             base_url="https://api.deepseek.com",
@@ -180,7 +180,7 @@ class Weather(Notice):
     def __init__(self, keys_filepath="pten_keys.ini", **kwargs):
         super().__init__()
         self.keys = Keys(keys_filepath)
-        self.api_key = self.keys.get_key("weather", "seniverse_api_key")
+        self.api_key = self.keys.get_key("notice", "seniverse_api_key")
         self.cities = {}
 
     def add_city(self, city_name, city_code):

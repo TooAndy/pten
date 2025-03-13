@@ -7,9 +7,9 @@ import pytest
 @pytest.fixture()
 def wwcpt(key_filepath_example):
     keys = Keys(key_filepath_example)
-    CORP_ID = keys.get_key("wwapi", "corpid")
-    API_TOKEN = keys.get_key("app", "app_token")
-    API_AES_KEY = keys.get_key("app", "aes_key")
+    CORP_ID = keys.get_key("ww", "corpid")
+    API_TOKEN = keys.get_key("ww", "app_token")
+    API_AES_KEY = keys.get_key("ww", "app_aes_key")
 
     wwcpt = WXBizMsgCrypt(API_TOKEN, API_AES_KEY, CORP_ID)
     return wwcpt

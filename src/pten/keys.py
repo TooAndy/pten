@@ -94,17 +94,17 @@ class Keys:
 
     def get_bot_weebhook_key(self):
         if self.bot_weebhook_key is None:
-            key = next(self._get_local_keys(section="bot", options=["webhook_key"]))
+            key = next(self._get_local_keys(section="ww", options=["webhook_key"]))
             self.bot_weebhook_key = key
 
         return self.bot_weebhook_key
 
     def get_app_agentid(self):
-        return next(self._get_local_keys(section="app", options=["agentid"]))
+        return next(self._get_local_keys(section="ww", options=["app_agentid"]))
 
     def get_contact_sync_secret(self):
         try:
-            s = self.get_key("wwapi", "contact_sync_secret")
+            s = self.get_key("ww", "contact_sync_secret")
         except StopIteration:
             logger.warning("Can not find contact_sync_secret in keys ini file")
             s = None
