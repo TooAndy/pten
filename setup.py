@@ -8,7 +8,7 @@ test_requirements = [
 
 setup(
     name="pten",
-    version="0.1.0",
+    version="0.2.0",
     description="A tool to use Wework API quickly and easily",
     author="PENGyong",
     author_email="1203029076@qq.com",
