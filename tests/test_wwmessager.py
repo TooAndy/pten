@@ -55,7 +55,7 @@ def test_app_msg_sender(mocker):
     app = AppMsgSender("pten_keys_example.ini")
     current_dir = Path(__file__).resolve().parent
 
-    response = app.send_text(content="hello world from app")
+    response = app.send_text("hello world from app")
     assert_response(response)
 
     markdown_content = '<font color="info">Hello world</font>'

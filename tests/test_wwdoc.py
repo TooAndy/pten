@@ -13,60 +13,60 @@ def test_wedoc(mocker):
     mock_post = mocker.patch("requests.post")
     mock_post.return_value.json.return_value = {"errcode": 0, "errmsg": "ok"}
 
-    wedoc = Doc("pten_keys_example.ini")
+    wwdoc = Doc("pten_keys_example.ini")
 
     doc_type = 10
     doc_name = "test_smart_table2"
     admin_users = ["a", "b"]
-    response = wedoc.create_doc(doc_type, doc_name, admin_users=admin_users)
+    response = wwdoc.create_doc(doc_type, doc_name, admin_users=admin_users)
     assert_response(response)
 
     docid = "your_docid"
 
     new_name = "new_name"
-    response = wedoc.rename_doc(new_name, docid=docid)
+    response = wwdoc.rename_doc(new_name, docid=docid)
     assert_response(response)
 
-    response = wedoc.get_doc_base_info(docid)
+    response = wwdoc.get_doc_base_info(docid)
     assert_response(response)
 
-    response = wedoc.get_doc_share_url(docid=docid)
+    response = wwdoc.get_doc_share_url(docid=docid)
     assert_response(response)
 
     requests = {"insert_text": {"text": "text content", "location": {"index": 0}}}
-    response = wedoc.udpate_doc(docid, requests)
+    response = wwdoc.udpate_doc(docid, requests)
     assert_response(response)
 
     properties = {"title": "智能表", "index": 3}
-    response = wedoc.smartsheet_add_sheet(docid, properties)
+    response = wwdoc.smartsheet_add_sheet(docid, properties)
     assert_response(response)
 
     sheet_id = "bG1daQ"
 
-    response = wedoc.smartsheet_delete_sheet(docid, sheet_id)
+    response = wwdoc.smartsheet_delete_sheet(docid, sheet_id)
     assert_response(response)
 
     title = "new title"
-    response = wedoc.smartsheet_update_sheet(docid, sheet_id, title)
+    response = wwdoc.smartsheet_update_sheet(docid, sheet_id, title)
     assert_response(response)
 
     view_title = "view_title"
     view_type = "VIEW_TYPE_GRID"
-    response = wedoc.smartsheet_add_view(docid, sheet_id, view_title, view_type)
+    response = wwdoc.smartsheet_add_view(docid, sheet_id, view_title, view_type)
     assert_response(response)
 
     view_ids = ["vZlli6"]
-    response = wedoc.smartsheet_delete_view(docid, sheet_id, view_ids)
+    response = wwdoc.smartsheet_delete_view(docid, sheet_id, view_ids)
     assert_response(response)
 
     sheet_id = "N0OBq1"
     view_id = "v7w2JH"
     view_title = "view_title2"
-    response = wedoc.smartsheet_update_view(docid, sheet_id, view_id, view_title)
+    response = wwdoc.smartsheet_update_view(docid, sheet_id, view_id, view_title)
     assert_response(response)
 
     fields = [{"field_title": "TITLE", "field_type": "FIELD_TYPE_TEXT"}]
-    response = wedoc.smartsheet_add_fields(docid, sheet_id, fields)
+    response = wwdoc.smartsheet_add_fields(docid, sheet_id, fields)
     assert_response(response)
     fields = [
         {
@@ -75,11 +75,11 @@ def test_wedoc(mocker):
             "property_number": {"decimal_places": 2, "use_separate": False},
         }
     ]
-    response = wedoc.smartsheet_add_fields(docid, sheet_id, fields)
+    response = wwdoc.smartsheet_add_fields(docid, sheet_id, fields)
     assert_response(response)
 
     field_ids = ["fBOiQ6"]
-    response = wedoc.smartsheet_delete_fields(docid, sheet_id, field_ids)
+    response = wwdoc.smartsheet_delete_fields(docid, sheet_id, field_ids)
     assert_response(response)
 
     update_fileds = [
@@ -90,7 +90,7 @@ def test_wedoc(mocker):
             "property_number": {"decimal_places": 0, "use_separate": False},
         }
     ]
-    response = wedoc.smartsheet_update_fields(docid, sheet_id, update_fileds)
+    response = wwdoc.smartsheet_update_fields(docid, sheet_id, update_fileds)
     assert_response(response)
 
     records = [
@@ -102,11 +102,11 @@ def test_wedoc(mocker):
         }
     ]
     key_type = "CELL_VALUE_KEY_TYPE_FIELD_TITLE"
-    response = wedoc.smartsheet_add_records(docid, sheet_id, records, key_type)
+    response = wwdoc.smartsheet_add_records(docid, sheet_id, records, key_type)
     assert_response(response)
 
     record_ids = ["rBtA4S", "rQnDtO"]
-    response = wedoc.smartsheet_delete_records(docid, sheet_id, record_ids)
+    response = wwdoc.smartsheet_delete_records(docid, sheet_id, record_ids)
     assert_response(response)
 
     record_id = "rKbfgH"
@@ -119,26 +119,26 @@ def test_wedoc(mocker):
             },
         }
     ]
-    response = wedoc.smartsheet_update_records(docid, sheet_id, update_records)
+    response = wwdoc.smartsheet_update_records(docid, sheet_id, update_records)
     assert_response(response)
 
-    response = wedoc.smartsheet_get_sheet(docid)
+    response = wwdoc.smartsheet_get_sheet(docid)
     assert_response(response)
 
-    response = wedoc.smartsheet_get_views(docid, sheet_id)
+    response = wwdoc.smartsheet_get_views(docid, sheet_id)
     assert_response(response)
 
-    response = wedoc.smartsheet_get_fields(docid, sheet_id)
+    response = wwdoc.smartsheet_get_fields(docid, sheet_id)
     assert_response(response)
 
-    response = wedoc.smartsheet_get_records(docid, sheet_id)
+    response = wwdoc.smartsheet_get_records(docid, sheet_id)
     assert_response(response)
 
     type = 1
-    response = wedoc.smartsheet_get_sheet_priv(docid, type)
+    response = wwdoc.smartsheet_get_sheet_priv(docid, type)
     assert_response(response)
 
-    response = wedoc.get_doc_auth(docid)
+    response = wwdoc.get_doc_auth(docid)
     assert_response(response)
 
     doc_join_rule = {
@@ -150,7 +150,7 @@ def test_wedoc(mocker):
         "corp_external_approve_only_by_admin": False,
         "ban_share_external": False,
     }
-    response = wedoc.mod_doc_join_rule(docid, **doc_join_rule)
+    response = wwdoc.mod_doc_join_rule(docid, **doc_join_rule)
     assert_response(response)
 
     member_list_rule = {
@@ -160,7 +160,7 @@ def test_wedoc(mocker):
             {"type": 1, "tmp_external_userid": "TMP_EXTERNAL_USERID2"},
         ],
     }
-    response = wedoc.mod_doc_join_rule(docid, **member_list_rule)
+    response = wwdoc.mod_doc_join_rule(docid, **member_list_rule)
     assert_response(response)
 
     safety_setting = {
@@ -172,7 +172,7 @@ def test_wedoc(mocker):
             "text": "test mark",
         },
     }
-    response = wedoc.mod_doc_safety_setting(docid, **safety_setting)
+    response = wwdoc.mod_doc_safety_setting(docid, **safety_setting)
     assert_response(response)
 
     form_info = {
@@ -195,9 +195,9 @@ def test_wedoc(mocker):
             ]
         },
     }
-    response = wedoc.create_form(form_info)
+    response = wwdoc.create_form(form_info)
     assert_response(response)
 
     form_id = "your_form_id"
-    response = wedoc.get_form_info(form_id)
+    response = wwdoc.get_form_info(form_id)
     assert_response(response)

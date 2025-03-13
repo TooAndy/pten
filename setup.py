@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
+from codecs import open
 from setuptools import setup, find_packages
 
 requires = ["apscheduler", "lunardate", "openai", "pycryptodome"]
@@ -6,10 +9,15 @@ test_requirements = [
     "pytest-mock>=3",
 ]
 
+with open("README.md", "r", "utf-8") as f:
+    readme = f.read()
+
 setup(
     name="pten",
-    version="0.2.0",
-    description="A tool to use Wework API quickly and easily",
+    version="0.3.0",
+    description="A tool to use Wechat work API quickly and easily",
+    long_description=readme,
+    long_description_content_type="text/markdown",
     author="PENGyong",
     author_email="1203029076@qq.com",
     url="https://github.com/bendell02/pten",
