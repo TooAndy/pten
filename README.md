@@ -67,6 +67,14 @@ debug_mode=False
 http=http://xxx:xxx@xxx.xxx.xxx.xxx:8888
 https=http://xxx:xxx@xxx.xxx.xxx.xxx:8888
 
+[cdn]
+; 使用腾讯 CDN 作为代理时, 可以使用这个方式
+; 腾讯 cdn 地址
+host=xxx.xxx.com
+; 如果开启了鉴权,则需要填写 key. 这里的鉴权只实现了 type D 格式的. 如果 key 不填写, 则不使用鉴权
+key=123sfaedfag
+timestamp_bit=10
+
 [notice]
 ;ai
 deepseek_api_key=sk-0a6e5b4e8b4c0e1a5b6b8e0e4d5aefb
