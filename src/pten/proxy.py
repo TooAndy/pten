@@ -49,9 +49,10 @@ class TencentCdnProxy():
             # 替换指定参数的值
             query_params[param] = [value]
 
-        sign, ts = self.generate_sign(parsed_url.path)
-        query_params["sign"] = [sign]
-        query_params["t"] = [ts]
+        if self.key:
+            sign, ts = self.generate_sign(parsed_url.path)
+            query_params["sign"] = [sign]
+            query_params["t"] = [ts]
 
         # 重新构建查询字符串
         new_query = urlencode(query_params, doseq=True)
