@@ -91,6 +91,33 @@ class Keys:
             pass
 
         return proxies
+    
+    def get_cdn_key(self):
+        key = None
+        try:
+            key = self.get_key(section="cdn", option="key")
+        except (configparser.Error, FileNotFoundError):
+            pass
+
+        return key
+
+    def get_cdn_timestamp_bit(self):
+        timestamp_bit = None
+        try:
+            timestamp_bit = self.get_key("cdn", "timestamp_bit")
+        except (configparser.Error, FileNotFoundError):
+            pass
+
+        return timestamp_bit
+
+    def get_cdn_host(self):
+        proxy = None
+        try:
+            proxy = self.get_key(section="cdn", option="host")
+        except (configparser.Error, FileNotFoundError):
+            pass
+
+        return proxy
 
     def get_bot_weebhook_key(self):
         if self.bot_weebhook_key is None:

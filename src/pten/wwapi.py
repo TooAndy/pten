@@ -5,7 +5,7 @@ pten.wwapi
 This module implements the WeWork API. It is from https://github.com/sbzhu/weworkapi_python
 
 """
-
+from .proxy import TencentCdnProxy
 from . import logger
 from .keys import Keys
 import hashlib
@@ -25,6 +25,7 @@ class AbstractApi(object):
         self.keys = keys if keys else Keys(keys_filepath)
         self.DEBUG_MODE = self.keys.get_debug_mode()
         self.proxies = self.keys.get_proxies()
+        self.sign_generater = TencentCdnProxy(self.keys.get_cdn_host(), self.keys.get_cdn_key(), timestamp_bit=self.keys.get_cdn_timestamp_bit())
 
     def get_access_token(self):
         raise NotImplementedError
@@ -54,14 +55,14 @@ class AbstractApi(object):
         for retryCnt in range(0, 3):
             if "POST" == method:
                 url = self.__make_url(shortUrl)
-                response = self.__http_post(url, args)
+                response = self.__http_post(self.sign_generater.proxy(url), args)
             elif "GET" == method:
                 url = self.__make_url(shortUrl)
                 url = self.__append_args(url, args)
                 response = self.__http_get(url)
             elif "POST_FILE" == method:
                 url = self.__make_url(shortUrl)
-                response = self.__post_file(url, args)
+                response = self.__post_file(self.sign_generater.proxy(url), args)
             else:
                 raise ApiException(-1, "unknown method type")
 
